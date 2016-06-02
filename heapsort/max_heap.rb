@@ -2,11 +2,20 @@ class MaxHeap
 
   def initialize(list)
     @list = list
+    @n = list.size - 1
     build_max_heap
   end
 
   def list
     @list
+  end
+
+  def shift
+    @list[0], @list[@n] = @list[@n], @list[0]
+    value = @list[@n]
+    @n = @n - 1
+    help(list, @n, 0)
+    value
   end
 
   private
@@ -29,7 +38,7 @@ class MaxHeap
       large = i
     end
 
-    if right <= n && list[right] > list[i]
+    if right <= n && list[right] > list[large]
       large = right
     end
 
