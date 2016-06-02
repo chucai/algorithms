@@ -1,7 +1,11 @@
 class Main
   class << self
     def build_max_heap(list)
-      help(list, list.length, 0)
+      size = list.length
+      mid = size / 2
+      mid.downto(0) do |i|
+        help(list, size - 1, i)
+      end
       list
     end
 
@@ -20,6 +24,7 @@ class Main
 
       if large != i
         list[large], list[i] = list[i], list[large]
+        help(list, n, large)
       end
     end
   end
