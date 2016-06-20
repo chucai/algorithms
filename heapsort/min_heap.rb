@@ -12,6 +12,13 @@ describe "MinHeap" do
       MinHeap.build_min_heap([5,1,3,2,4], 0).must_equal [1,2,3,5,4]
     end
   end
+
+  describe "[10,9,8,7,6,5,4,3,2,1]" do
+    it "should equal [1, 2, 4, 3, 6, 5, 8, 10, 7, 9]" do
+      items = [10,9,8,7,6,5,4,3,2,1]
+      MinHeap.translate(items).must_equal [1, 2, 4, 3, 6, 5, 8, 10, 7, 9]
+    end
+  end
 end
 
 class MinHeap
@@ -19,7 +26,10 @@ class MinHeap
   class << self
 
     def translate(items)
-      build_min_heap(items, 0)
+      start = items.size / 2
+      start.downto(0).each do |i|
+        build_min_heap(items, i)
+      end
       items
     end
 
