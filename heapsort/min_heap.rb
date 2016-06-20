@@ -6,6 +6,12 @@ describe "MinHeap" do
       MinHeap.build_min_heap([3,2,1], 0).must_equal [1,2,3]
     end
   end
+
+  describe "[5,1,3,2,4]" do
+    it "should equal [1,2,3,5,4]" do
+      MinHeap.build_min_heap([5,1,3,2,4], 0).must_equal [1,2,3,5,4]
+    end
+  end
 end
 
 class MinHeap
@@ -22,16 +28,18 @@ class MinHeap
       right = 2 * current + 2
       least = current
 
-      if items[least] > items[left]
+      if left < items.size && items[least] > items[left]
         least = left
       end
 
-      if items[least] > items[right]
+      if right < items.size && items[least] > items[right]
         least = right
       end
 
       if least != current
         items[current], items[least] = items[least], items[current]
+
+        build_min_heap(items, least)
       end
 
       items
