@@ -33,7 +33,47 @@ class Match
     end
   end
 
+  def target_size
+    @target.length - 1
+  end
+
   def get_next
+    numbers = []
+    0.upto(target_size) do |i|
+      numbers << get_next_by_position(i)
+    end
+    numbers
+  end
+
+  def get_next_by_position(i)
+    return 0 if i == 0
+    common = get_common_string_of_target_by(i)
+    larget_match_str = common.sort_by { |str| -str.size }.first || ''
+    larget_match_str.size
+  end
+
+  def get_common_string_of_target_by(i)
+    prefix = get_prefix_string_by_index(i)
+    postfix = get_postfix_string_by_index(i)
+    prefix & postfix
+  end
+
+  # 获取指定位置的target的所有前缀
+  def get_prefix_string_by_index(i)
+    prefix = []
+    0.upto(i-1) do |j|
+      prefix << @target[0..j]
+    end
+    prefix
+  end
+
+  # 获取指定位置的target的所有后缀
+  def get_postfix_string_by_index(i)
+    postfix = []
+    i.downto(1) do |j|
+      postfix << @target[j..i]
+    end
+    postfix
   end
 
 end
