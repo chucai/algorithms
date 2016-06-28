@@ -15,7 +15,7 @@ class Match
 
     return false if target_length > source_length
 
-    while i <= source_length - target_length
+    while i <= source_length && j <= target_length
       if @source[i] == @target[j]
         i += 1
         j += 1
@@ -25,11 +25,15 @@ class Match
       end
     end
 
-    if j == target_length
+    # Attention: 由于最后 j + 1了，所以其值应该等于 target_length + 1
+    if j == target_length + 1
       return i - j
     else
       return  false
     end
+  end
+
+  def get_next
   end
 
 end
