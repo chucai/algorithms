@@ -2,7 +2,10 @@ class Array
 
   def build_min_heap
     index = 0
-    build_min_heap_with_index(index)
+    (size/2).downto(0).each do |index|
+      build_min_heap_with_index(index)
+    end
+    self
   end
 
   def build_min_heap_with_index(index)
@@ -20,6 +23,7 @@ class Array
 
     if least != index
       self[index], self[least] = self[least], self[index]
+      build_min_heap_with_index(least)
     end
 
     self
