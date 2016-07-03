@@ -22,3 +22,5 @@ n个垂直线段例如线段的两个端点在（i,ai）和（i,0）。
 
 备注：你不必倾倒容器。
 
+[(Leecode 11)获取最大水容器](https://mp.weixin.qq.com/s?__biz=MzAwMDk1MTUyNw==&mid=2247483746&idx=1&sn=cf3b506b6416d60ee0717b27c5e4765b&scene=1&srcid=0703JvH1X5qlqITp2Peed3kg&pass_ticket=YQcXNdT5INAJFScGSa6m1oCVQovf6MkH5OltTURHlsvnDDMuqFp14WEf4BMkRdKN#rd)
+
